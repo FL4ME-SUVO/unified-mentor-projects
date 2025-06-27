@@ -1,0 +1,858 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for 3D flip animation */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Performance optimizations */
+.scroll-optimized {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.navbar-optimized {
+  will-change: background-color, backdrop-filter, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.particle-container {
+  will-change: transform;
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+/* Additional custom styles */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Animations */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delay-1 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .animate-float-delay-2 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 3s ease-in-out infinite;
+  }
+
+  /* New optimized navbar animations */
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  .animate-navbar-fade {
+    animation: navbarFade 0.5s ease-out;
+  }
+
+  .animate-navbar-scale {
+    animation: navbarScale 0.3s ease-out;
+  }
+
+  .animate-mobile-menu {
+    animation: mobileMenu 0.4s ease-out;
+  }
+
+  .animate-backdrop-blur {
+    animation: backdropBlur 0.3s ease-out;
+  }
+
+  /* Mobile-first responsive containers */
+  .container-responsive {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 100%;
+  }
+  
+  .container-responsive-sm {
+    @apply w-full px-4 sm:px-6 mx-auto;
+    max-width: 640px;
+  }
+  
+  .container-responsive-md {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 768px;
+  }
+  
+  .container-responsive-lg {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 1024px;
+  }
+  
+  .container-responsive-xl {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 1280px;
+  }
+  
+  .container-responsive-2xl {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 1536px;
+  }
+
+  /* Responsive text sizes */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+  
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+  
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl;
+  }
+  
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl;
+  }
+  
+  .text-responsive-3xl {
+    @apply text-3xl sm:text-4xl;
+  }
+  
+  .text-responsive-4xl {
+    @apply text-4xl sm:text-5xl;
+  }
+  
+  .text-responsive-5xl {
+    @apply text-5xl sm:text-6xl;
+  }
+
+  /* Responsive spacing */
+  .space-responsive-xs {
+    @apply space-y-2 sm:space-y-3;
+  }
+  
+  .space-responsive-sm {
+    @apply space-y-3 sm:space-y-4;
+  }
+  
+  .space-responsive-md {
+    @apply space-y-4 sm:space-y-6;
+  }
+  
+  .space-responsive-lg {
+    @apply space-y-6 sm:space-y-8;
+  }
+  
+  .space-responsive-xl {
+    @apply space-y-8 sm:space-y-12;
+  }
+
+  /* Responsive padding */
+  .p-responsive-sm {
+    @apply p-3 sm:p-4;
+  }
+  
+  .p-responsive-md {
+    @apply p-4 sm:p-6;
+  }
+  
+  .p-responsive-lg {
+    @apply p-6 sm:p-8;
+  }
+  
+  .p-responsive-xl {
+    @apply p-8 sm:p-12;
+  }
+
+  /* Responsive margins */
+  .m-responsive-sm {
+    @apply m-3 sm:m-4;
+  }
+  
+  .m-responsive-md {
+    @apply m-4 sm:m-6;
+  }
+  
+  .m-responsive-lg {
+    @apply m-6 sm:m-8;
+  }
+  
+  .m-responsive-xl {
+    @apply m-8 sm:m-12;
+  }
+
+  /* Responsive grid layouts */
+  .grid-responsive-1 {
+    @apply grid grid-cols-1;
+  }
+  
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2;
+  }
+  
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+  
+  .grid-responsive-4 {
+    @apply grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4;
+  }
+
+  /* Responsive flex layouts */
+  .flex-responsive-col {
+    @apply flex flex-col sm:flex-row;
+  }
+  
+  .flex-responsive-row {
+    @apply flex flex-row;
+  }
+  
+  .flex-responsive-center {
+    @apply flex flex-col sm:flex-row items-center justify-center;
+  }
+
+  /* Mobile-specific utilities */
+  .mobile-only {
+    @apply block sm:hidden;
+  }
+  
+  .desktop-only {
+    @apply hidden sm:block;
+  }
+  
+  .tablet-only {
+    @apply hidden md:block lg:hidden;
+  }
+
+  /* Touch-friendly elements */
+  .touch-friendly {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  .touch-friendly-sm {
+    @apply min-h-[36px] min-w-[36px];
+  }
+  
+  .touch-friendly-lg {
+    @apply min-h-[48px] min-w-[48px];
+  }
+
+  /* Responsive navigation */
+  .nav-responsive {
+    @apply hidden md:flex;
+  }
+  
+  .nav-mobile {
+    @apply md:hidden;
+  }
+
+  /* Responsive forms */
+  .form-responsive {
+    @apply w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto;
+  }
+  
+  .form-responsive-wide {
+    @apply w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto;
+  }
+  
+  .form-responsive-full {
+    @apply w-full max-w-lg sm:max-w-xl lg:max-w-2xl mx-auto;
+  }
+
+  /* Responsive cards */
+  .card-responsive {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+  
+  .card-responsive-sm {
+    @apply p-3 sm:p-4;
+  }
+  
+  .card-responsive-lg {
+    @apply p-6 sm:p-8 lg:p-12;
+  }
+
+  /* Responsive buttons */
+  .btn-responsive {
+    @apply px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base;
+  }
+  
+  .btn-responsive-sm {
+    @apply px-3 sm:px-4 py-2 text-sm;
+  }
+  
+  .btn-responsive-lg {
+    @apply px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg;
+  }
+
+  /* Responsive images */
+  .img-responsive {
+    @apply w-full h-auto;
+  }
+  
+  .img-responsive-cover {
+    @apply w-full h-full object-cover;
+  }
+  
+  .img-responsive-contain {
+    @apply w-full h-full object-contain;
+  }
+
+  /* Responsive aspect ratios */
+  .aspect-responsive-square {
+    @apply aspect-square;
+  }
+  
+  .aspect-responsive-video {
+    @apply aspect-video;
+  }
+  
+  .aspect-responsive-photo {
+    @apply aspect-[4/3];
+  }
+
+  /* Responsive shadows */
+  .shadow-responsive {
+    @apply shadow-sm sm:shadow-md lg:shadow-lg;
+  }
+  
+  .shadow-responsive-lg {
+    @apply shadow-md sm:shadow-lg lg:shadow-xl;
+  }
+
+  /* Responsive borders */
+  .border-responsive {
+    @apply border border-gray-200;
+  }
+  
+  .border-responsive-lg {
+    @apply border-2 border-gray-200;
+  }
+
+  /* Responsive rounded corners */
+  .rounded-responsive {
+    @apply rounded-lg sm:rounded-xl lg:rounded-2xl;
+  }
+  
+  .rounded-responsive-sm {
+    @apply rounded-md sm:rounded-lg;
+  }
+  
+  .rounded-responsive-lg {
+    @apply rounded-xl sm:rounded-2xl lg:rounded-3xl;
+  }
+
+  /* Responsive backdrop blur */
+  .backdrop-responsive {
+    @apply backdrop-blur-sm sm:backdrop-blur-md lg:backdrop-blur-lg;
+  }
+
+  /* Responsive animations */
+  .animate-responsive {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .animate-responsive-fast {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .animate-responsive-slow {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  /* Responsive hover effects */
+  .hover-responsive {
+    @apply hover:scale-105 hover:shadow-lg transition-all duration-300;
+  }
+  
+  .hover-responsive-sm {
+    @apply hover:scale-102 hover:shadow-md transition-all duration-300;
+  }
+  
+  .hover-responsive-lg {
+    @apply hover:scale-110 hover:shadow-xl transition-all duration-300;
+  }
+
+  /* Responsive focus states */
+  .focus-responsive {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .focus-responsive-sm {
+    @apply focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1;
+  }
+  
+  .focus-responsive-lg {
+    @apply focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-offset-4;
+  }
+
+  /* Responsive loading states */
+  .loading-responsive {
+    @apply animate-pulse;
+  }
+  
+  .loading-responsive-spin {
+    @apply animate-spin;
+  }
+
+  /* Responsive scrollbar */
+  .scrollbar-responsive {
+    @apply scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100;
+  }
+  
+  .scrollbar-responsive-dark {
+    @apply scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800;
+  }
+
+  /* Responsive overflow */
+  .overflow-responsive {
+    @apply overflow-x-auto overflow-y-hidden;
+  }
+  
+  .overflow-responsive-y {
+    @apply overflow-y-auto overflow-x-hidden;
+  }
+
+  /* Responsive positioning */
+  .sticky-responsive {
+    @apply sticky top-0 z-50;
+  }
+  
+  .fixed-responsive {
+    @apply fixed top-0 left-0 right-0 z-50;
+  }
+
+  /* Responsive visibility */
+  .visible-responsive {
+    @apply visible opacity-100;
+  }
+  
+  .hidden-responsive {
+    @apply invisible opacity-0;
+  }
+
+  /* Responsive z-index */
+  .z-responsive-dropdown {
+    @apply z-10 sm:z-20 lg:z-30;
+  }
+  
+  .z-responsive-modal {
+    @apply z-20 sm:z-30 lg:z-40;
+  }
+  
+  .z-responsive-tooltip {
+    @apply z-30 sm:z-40 lg:z-50;
+  }
+
+  /* Mobile filter improvements */
+  .filter-mobile {
+    @apply w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+  
+  .filter-mobile-select {
+    @apply w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white appearance-none;
+  }
+  
+  .filter-mobile-button {
+    @apply w-full px-4 py-3 text-base font-medium border rounded-xl transition-all duration-200 min-h-[44px] flex items-center justify-center;
+  }
+
+  /* Mobile search improvements */
+  .search-mobile {
+    @apply w-full pl-10 pr-3 py-3 sm:py-4 text-base border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+
+  /* Mobile grid improvements */
+  .grid-mobile-filters {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4;
+  }
+  
+  .grid-mobile-filters-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4;
+  }
+
+  /* Mobile spacing improvements */
+  .space-mobile-filters {
+    @apply space-y-4 sm:space-y-0;
+  }
+  
+  .space-mobile-filters-y {
+    @apply space-y-3 sm:space-y-0;
+  }
+
+  /* Mobile text improvements */
+  .text-mobile-filter {
+    @apply text-sm sm:text-base;
+  }
+  
+  .text-mobile-label {
+    @apply text-sm font-medium text-gray-700 mb-1 sm:mb-2;
+  }
+
+  /* Mobile button improvements */
+  .btn-mobile-filter {
+    @apply inline-flex items-center px-4 sm:px-6 py-3 sm:py-4 border rounded-xl font-medium transition-all duration-200 touch-friendly;
+  }
+  
+  .btn-mobile-filter-full {
+    @apply w-full inline-flex items-center justify-center px-4 sm:px-6 py-3 sm:py-4 border rounded-xl font-medium transition-all duration-200 touch-friendly;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* New optimized navbar keyframes */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes navbarFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navbarScale {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes mobileMenu {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes backdropBlur {
+  from {
+    backdrop-filter: blur(0px);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Hover effects for interactive elements */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
+  background-size: 300% 300%;
+  animation: gradientShift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Parallax effect for background elements */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Loading animation */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+/* Mobile viewport fixes */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Prevent white borders on mobile */
+* {
+  box-sizing: border-box;
+}
+
+/* Mobile viewport optimization */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  .particle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
