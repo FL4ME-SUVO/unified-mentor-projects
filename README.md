@@ -1,3 +1,25 @@
+<p align="center">
+  <picture>
+    <source srcset=".github/dark-logo.png" media="(prefers-color-scheme: dark)">
+    <img src=".github/light-logo.png" alt="Project Banner" width="200">
+  </picture>
+</p>
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/build-success-brightgreen" alt="Build Status" />
+<img src="https://img.shields.io/badge/Vue.js-42B883?style=flat&logo=vue.js&logoColor=white" alt="Vue.js" />
+<img src="https://img.shields.io/badge/Hono.js-FF9C24?style=flat&logo=hono&logoColor=white" alt="Hono.js" />
+<img src="https://img.shields.io/badge/Bun-F472B6?style=flat&logo=bun&logoColor=white" alt="Bun" />
+<img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js" />
+<img src="https://img.shields.io/badge/Chart.js-FF6384?style=flat&logo=chart.js&logoColor=white" alt="Chart.js" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript" />
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=black" alt="TypeScript" />
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5" />
+<img src="https://img.shields.io/badge/CSS3-663399?style=flat&logo=css&logoColor=white" alt="CSS3" />
+
+</div>
+
 # Unified Mentor Projects
 
 This repository consists of all the projects done during an internship at Unified Mentor.
