@@ -30,7 +30,7 @@ This repository consists of all the projects done during an internship at Unifie
   - [Expenser Tracker (SpendWise)](#2-expenser_tracker-spendwise)
   - [Memory Card Game (Ditto)](#3-memory_card_game-ditto)
   - [Recipe Book](#4-recipe_book)
-  - [Career Guidance](#5-career_guidance)
+  - [Career Guidance (EduPath)](#5-career_guidance)
   - [Gym Management System (GymBoy)](#6-gym_management_system-gymboy)
 - [License](#license)
 
