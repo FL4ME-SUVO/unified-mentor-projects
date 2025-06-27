@@ -1,0 +1,106 @@
+.game-header {
+  padding: 1rem 10rem;
+
+  .score-turn {
+    flex-grow: 1;
+    padding: 0 1.5rem;
+    .poke-ball {
+      width: 7rem;
+      /* height: 4rem; */
+      aspect-ratio: 1/1;
+      opacity: 0.1;
+      transition: opacity 0.2s ease-in;
+    }
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+    .poke-ball.active-player {
+      opacity: 1;
+    }
+  }
+}
+
+.player {
+  width: 10rem;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+  border: 3px solid transparent;
+  transition: all 0.3s ease-in;
+  border-color: transparent;
+
+  position: relative;
+  overflow: hidden;
+  p {
+    opacity: 0.4;
+    transition: opacity 0.2s ease-in;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    filter: brightness(0.5) blur(1.2px);
+    transition: filter 0.2s ease-in;
+  }
+}
+
+.left-box {
+  background: rgba(171, 94, 243, 0.382);
+}
+.left-box.active {
+  background: rgba(125, 24, 247, 0.83);
+  border-color: #ffffff78;
+  p {
+    opacity: 1;
+  }
+  img {
+    filter: brightness(1) blur(0);
+  }
+}
+
+.right-box {
+  background: rgba(94, 243, 94, 0.264);
+}
+.right-box.active {
+  background: rgba(28, 233, 28, 0.801);
+  border-color: #ffffff78;
+  p {
+    opacity: 1;
+  }
+  img {
+    filter: brightness(1) blur(0);
+  }
+}
+
+.draw-box {
+  background: rgba(31, 127, 205, 0.992);
+  border-color: #ffffff78;
+  img {
+    filter: brightness(1) blur(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .game-header {
+    padding: 1rem;
+    .score-turn {
+      padding: 0 0.5rem;
+      .poke-ball {
+        width: 2rem;
+      }
+      img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+      }
+    }
+  }
+  .player {
+    width: 5rem;
+    height: 5rem;
+    /* img {
+      width: ;
+      height: 3rem;
+    } */
+  }
+}
